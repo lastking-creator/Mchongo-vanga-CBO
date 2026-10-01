@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('admin1234'),
                 'role' => 'admin',
                 'status' => 'approved',
-                'registration_number' => 'JVT-2026-0001',
+                'registration_number' => 'MCHV/0001',
             ]
         );
     }

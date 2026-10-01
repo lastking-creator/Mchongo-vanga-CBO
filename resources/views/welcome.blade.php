@@ -6,14 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JVT CBO</title>
+    <title>MCHONGO VANGA CBO</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
     <!-- Navigation -->
     <nav class="bg-emerald-700 text-white px-6 py-4 flex justify-between items-center shadow-md">
-        <h1 class="text-xl font-bold">JASINI VIJANA THABITI CBO</h1>
+        <h1 class="text-xl font-bold">MCHONGO VANGA CBO</h1>
         <div>
             @if (Route::has('login'))
                 @auth
@@ -92,7 +92,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-400 text-center py-6">
-        <p>&copy; {{ date('Y') }} JASINI VIJANA THABITI CBO. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} MCHONGO VANGA CBO. All rights reserved.</p>
     </footer>
 
 </body>
