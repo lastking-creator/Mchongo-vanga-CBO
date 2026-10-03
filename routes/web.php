@@ -6,9 +6,26 @@ use App\Http\Controllers\Admin\WelcomeContentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/check-photo-xyz123/{email}', function ($email) {
+    $user = User::where('email', $email)->first();
+    if (!$user) {
+        return 'User not found';
+    }
+    return [
+        'name' => $user->name,
+        'email' => $user->email,
+        'passport_photo' => $user->passport_photo,
+        'file_exists_in_storage' => $user->passport_photo
+            ? Storage::disk('public')->exists($user->passport_photo)
+            : 'no photo path saved',
+    ];
 });
 
 Route::get('/dashboard', [MemberDashboardController::class, 'index'])
@@ -19,11 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('/wipe-non-admin-users-xyz123', function () {
-    $deleted = \App\Models\User::where('role', '!=', 'admin')->delete();
-    return "Deleted {$deleted} non-admin user(s). Admin accounts preserved.";
 });
 
 // Admin Route Group
